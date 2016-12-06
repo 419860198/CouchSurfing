@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: GuidancePageController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
