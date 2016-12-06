@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85412B2E1DF69B6E00DEF6BF /* GuidancePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85412B2D1DF69B6E00DEF6BF /* GuidancePageController.swift */; };
+		85412B311DF6A28400DEF6BF /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85412B301DF6A28400DEF6BF /* Screen.swift */; };
+		85412B341DF6A5E100DEF6BF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85412B331DF6A5E100DEF6BF /* UIColorExtension.swift */; };
 		8581EF8C1DF65B0200D8AB32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581EF8B1DF65B0200D8AB32 /* AppDelegate.swift */; };
 		8581EF8E1DF65B0200D8AB32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581EF8D1DF65B0200D8AB32 /* ViewController.swift */; };
 		8581EF911DF65B0200D8AB32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8581EF8F1DF65B0200D8AB32 /* Main.storyboard */; };
@@ -26,9 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		85412B2D1DF69B6E00DEF6BF /* GuidancePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidancePageController.swift; sourceTree = "<group>"; };
+		85412B301DF6A28400DEF6BF /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		85412B331DF6A5E100DEF6BF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8581EF881DF65B0200D8AB32 /* CouchSurfing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouchSurfing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8581EF8B1DF65B0200D8AB32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8581EF8D1DF65B0200D8AB32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8581EF8D1DF65B0200D8AB32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = CouchSurfing/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		8581EF901DF65B0200D8AB32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8581EF921DF65B0200D8AB32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8581EF951DF65B0200D8AB32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +62,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85412B281DF69AEE00DEF6BF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				85412B2C1DF69B4B00DEF6BF /* GuidancePage */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		85412B291DF69AFB00DEF6BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85412B2A1DF69B2100DEF6BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85412B2B1DF69B2100DEF6BF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				85412B321DF6A5C100DEF6BF /* Extensions */,
+				85412B301DF6A28400DEF6BF /* Screen.swift */,
+			);
+			name = Other;
+			path = View/Other;
+			sourceTree = "<group>";
+		};
+		85412B2C1DF69B4B00DEF6BF /* GuidancePage */ = {
+			isa = PBXGroup;
+			children = (
+				85412B2D1DF69B6E00DEF6BF /* GuidancePageController.swift */,
+			);
+			path = GuidancePage;
+			sourceTree = "<group>";
+		};
+		85412B321DF6A5C100DEF6BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				85412B331DF6A5E100DEF6BF /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8581EF7F1DF65B0100D8AB32 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +133,10 @@
 			children = (
 				8581EF8B1DF65B0200D8AB32 /* AppDelegate.swift */,
 				8581EF8D1DF65B0200D8AB32 /* ViewController.swift */,
+				85412B281DF69AEE00DEF6BF /* ViewController */,
+				85412B2A1DF69B2100DEF6BF /* View */,
+				85412B291DF69AFB00DEF6BF /* Model */,
+				85412B2B1DF69B2100DEF6BF /* Other */,
 				8581EF8F1DF65B0200D8AB32 /* Main.storyboard */,
 				8581EF921DF65B0200D8AB32 /* Assets.xcassets */,
 				8581EF941DF65B0200D8AB32 /* LaunchScreen.storyboard */,
@@ -106,6 +164,7 @@
 				8581EF841DF65B0100D8AB32 /* Sources */,
 				8581EF851DF65B0100D8AB32 /* Frameworks */,
 				8581EF861DF65B0100D8AB32 /* Resources */,
+				85412B351DF6AA5700DEF6BF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -194,13 +253,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		85412B351DF6AA5700DEF6BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8581EF841DF65B0100D8AB32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8581EF8E1DF65B0200D8AB32 /* ViewController.swift in Sources */,
+				85412B2E1DF69B6E00DEF6BF /* GuidancePageController.swift in Sources */,
+				85412B341DF6A5E100DEF6BF /* UIColorExtension.swift in Sources */,
 				8581EF8C1DF65B0200D8AB32 /* AppDelegate.swift in Sources */,
+				85412B311DF6A28400DEF6BF /* Screen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				INFOPLIST_FILE = CouchSurfing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -352,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				INFOPLIST_FILE = CouchSurfing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: GuidancePageController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
