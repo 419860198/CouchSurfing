@@ -9,28 +9,43 @@
 import UIKit
 class GuidancePageController: UIViewController {
     
-    private let guidanceImages = ["guidancePage_1","guidancePage_2","guidancePage_3","guidancePage_4","guidancePage_5"]
-    private let guidancePageView:UIScrollView = UIScrollView.init()
+    fileprivate let guidanceImages = ["guidancePage_1","guidancePage_2","guidancePage_3","guidancePage_4","guidancePage_5"]
+    fileprivate let guidancePageView:UIScrollView = {
+        let view = UIScrollView()
+        view.bouncesZoom = true
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        view.bounces = false
+        view.isPagingEnabled = true
+        
+        return view
+    }()
     var toucheBlock:(()->())?
+
     
+// MARK: -  life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initGuidancePageView()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+}
+
+
 // MARK: - private function
-    func initGuidancePageView(){
+extension GuidancePageController{
+    fileprivate func initGuidancePageView(){
         guidancePageView.frame = view.bounds
         guidancePageView.contentSize = CGSize(width: ScreenUI.with * CGFloat(integerLiteral: guidanceImages.count), height: ScreenUI.herght)
-        guidancePageView.bouncesZoom = true
-        guidancePageView.showsVerticalScrollIndicator = false
-        guidancePageView.showsHorizontalScrollIndicator = false
-        guidancePageView.bounces = false
-        guidancePageView.isPagingEnabled = true
         view.addSubview(guidancePageView)
         
-        for i in 0 ..< guidanceImages.count {
-            let imageView = UIImageView(image: UIImage(named: guidanceImages[i]))
+        for (i,imageName) in guidanceImages.enumerated() {
+            let imageView = UIImageView(image: UIImage(named: imageName))
             let frame:CGRect = CGRect(x: CGFloat(i) * ScreenUI.with, y:0.0 , width: ScreenUI.with, height: ScreenUI.herght)
             imageView.frame = frame
             guidancePageView.addSubview(imageView)
@@ -41,16 +56,10 @@ class GuidancePageController: UIViewController {
         }
     }
     
-    func guidancePageDidTouche(_ sender: AnyObject){
+    @objc fileprivate func guidancePageDidTouche(_ sender: AnyObject){
         
         if toucheBlock != nil{
             toucheBlock!()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

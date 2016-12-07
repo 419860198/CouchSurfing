@@ -17,14 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         application.isStatusBarHidden = false;
         let window:UIWindow = UIWindow.init(frame: UIScreen.main.bounds)
+        window.backgroundColor = UIColor.white
         self.window = window
         self.window?.makeKeyAndVisible()
         
         let guidanceC:GuidancePageController = GuidancePageController()
         guidanceC.toucheBlock = {
-            print("touche block call")
+            let loginC = LoginViewController()
+            
+            let navC = UINavigationController(rootViewController: loginC)
+            window.rootViewController = navC
         }
         window.rootViewController = guidanceC
+        
+        setTintColor()
         
         return true
     }
@@ -54,3 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate{
+    func setTintColor() {
+        let navAppearance = UINavigationBar.appearance()
+        navAppearance.tintColor = ScreenUI.mainColor
+        navAppearance.setBackgroundImage(UIImage.tint(color: ScreenUI.mainColor, blendMode: .normal, size: CGSize(width: 1, height: 1)), for: UIBarMetrics.default)
+        navAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+    }
+}
