@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDataManager.manager().guidancePageShow {
             let loginC = LoginViewController()
             
-            let navC = UINavigationController(rootViewController: loginC)
+            let navC = BaseNavigationController(rootViewController: loginC)
             window.rootViewController = navC
             
         }else{
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guidanceC.toucheBlock = {
                 let loginC = LoginViewController()
                 
-                let navC = UINavigationController(rootViewController: loginC)
+                let navC = BaseNavigationController(rootViewController: loginC)
                 window.rootViewController = navC
             }
             window.rootViewController = guidanceC
