@@ -19,13 +19,14 @@ class TopTabBarController: UITabBarController {
     }
     
     func setUpTabBar() {
-        let homeItem = UITabBarItem(title: "", image: UIImage(), selectedImage: UIImage())//30
+        tabBar.backgroundColor = ScreenUI.mainColor
+        let homeItem = UITabBarItem(title: "", image: UIImage(named:"home_n"), selectedImage: UIImage(named:"home_s"))//30
         let homeC = NavigationController(rootViewController: HomeViewController())
         homeC.tabBarItem = homeItem
-        let newsItem = UITabBarItem(title: nil, image: UIImage(), selectedImage: UIImage())
+        let newsItem = UITabBarItem(title: nil, image: UIImage(named:"News_n"), selectedImage: UIImage(named:"News_s"))
         let newsC = NavigationController(rootViewController: NewsViewController())
         newsC.tabBarItem = newsItem
-        let personalItem = UITabBarItem(title: nil, image: UIImage(), selectedImage: UIImage())
+        let personalItem = UITabBarItem(title: nil, image: UIImage(named:"personal_n"), selectedImage: UIImage(named:"personal_s"))
         let personalC = NavigationController(rootViewController: PersonalViewController())
         personalC.tabBarItem = personalItem
         

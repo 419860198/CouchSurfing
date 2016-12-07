@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         application.isStatusBarHidden = false
@@ -85,5 +84,10 @@ extension AppDelegate{
 //        navAppearance.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navAppearance.backgroundColor = ScreenUI.mainColor
         navAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        
+        let tabbarAppearance = UITabBar.appearance()
+        tabbarAppearance.tintColor = UIColor.white
+        tabbarAppearance.backgroundColor = ScreenUI.mainColor
+        tabbarAppearance.backgroundImage = UIImage()
     }
 }
