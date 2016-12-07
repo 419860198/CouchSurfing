@@ -9,8 +9,8 @@
 import UIKit
 import SnapKit
 
-class LoginViewController: UIViewController {
-
+class LoginViewController: NavigationViewController {
+    
     fileprivate let appIcon:UIImageView = {
         let image = UIImageView(image: UIImage(named: "appIcon"))
         return image
@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
         
         return btn
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,13 +82,14 @@ class LoginViewController: UIViewController {
 // MARK: - private func
 extension LoginViewController{
     func initUI() {
-        title = "登录"
+        titleStr = "登录"
+        view.backgroundColor = UIColor.white
         //image
         view.addSubview(appIcon)
         appIcon.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(100)
             make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(30)
+            make.top.equalTo(navigationView.snp.bottom).offset(30)
         }
         //account input view
         view.addSubview(accountInputView)
@@ -119,8 +121,9 @@ extension LoginViewController{
             make.bottom.equalTo(view)
             make.width.equalTo(view)
             make.centerX.equalTo(view)
-            make.height.equalTo(52)
+            make.height.equalTo(49)
         }
+        
         
     }
     
@@ -133,11 +136,11 @@ extension LoginViewController{
 //MARK: - action
 extension LoginViewController{
     func captchaBtnDidClicked(_ btn:UIButton) {
-        
     }
     
     func loginBtnDidClicked(_ btn:UIButton) {
         UserDataManager.manager().guidancePageShow = true
+        
     }
     
 }

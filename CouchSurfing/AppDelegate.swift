@@ -20,30 +20,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         
+        setTintColor()
+        
+        
         let window:UIWindow = UIWindow.init(frame: UIScreen.main.bounds)
         window.backgroundColor = UIColor.white
         self.window = window
         self.window?.makeKeyAndVisible()
         
 // MARK: - root viewController
-        if UserDataManager.manager().guidancePageShow {
-            let loginC = LoginViewController()
-            
-            let navC = BaseNavigationController(rootViewController: loginC)
-            window.rootViewController = navC
-            
-        }else{
-            let guidanceC:GuidancePageController = GuidancePageController()
-            guidanceC.toucheBlock = {
-                let loginC = LoginViewController()
-                
-                let navC = BaseNavigationController(rootViewController: loginC)
-                window.rootViewController = navC
-            }
-            window.rootViewController = guidanceC
-        }
+//        if UserDataManager.manager().guidancePageShow {
+//            let loginC = LoginViewController()
+//            
+//            let navC = NavigationController(rootViewController: loginC)
+//            window.rootViewController = navC
+//            
+//        }else{
+//            let guidanceC:GuidancePageController = GuidancePageController()
+//            guidanceC.toucheBlock = {
+//                let loginC = LoginViewController()
+//                
+//                let navC = NavigationController(rootViewController: loginC)
+//                window.rootViewController = navC
+//            }
+//            window.rootViewController = guidanceC
+//        }
         
-        setTintColor()
+        let topC = TopTabBarController()
+        window.rootViewController = topC
         
         return true
     }
@@ -77,7 +81,9 @@ extension AppDelegate{
     func setTintColor() {
         let navAppearance = UINavigationBar.appearance()
         navAppearance.tintColor = ScreenUI.mainColor
-        navAppearance.setBackgroundImage(UIImage.tint(color: ScreenUI.mainColor, blendMode: .normal, size: CGSize(width: 1, height: 1)), for: UIBarMetrics.default)
+//        navAppearance.setBackgroundImage(UIImage.tint(color: ScreenUI.mainColor, blendMode: .normal, size: CGSize(width: 1, height: 1)), for: UIBarMetrics.default)
+//        navAppearance.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navAppearance.backgroundColor = ScreenUI.mainColor
         navAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
 }
