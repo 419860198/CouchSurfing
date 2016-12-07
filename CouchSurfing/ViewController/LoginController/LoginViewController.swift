@@ -139,7 +139,6 @@ extension LoginViewController{
     }
     
     func loginBtnDidClicked(_ btn:UIButton) {
-        UserDataManager.manager().guidancePageShow = true
         
     }
     

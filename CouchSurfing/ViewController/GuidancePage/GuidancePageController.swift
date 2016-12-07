@@ -59,6 +59,7 @@ extension GuidancePageController{
     @objc fileprivate func guidancePageDidTouche(_ sender: AnyObject){
         
         if toucheBlock != nil{
+            UserDataManager.manager().guidancePageShow = true
             toucheBlock!()
         }
     }
