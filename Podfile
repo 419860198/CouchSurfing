@@ -10,6 +10,7 @@ target 'CouchSurfing' do
   # Pods for CouchSurfing
   pod 'SnapKit', '~> 3.0.2'
   pod 'Alamofire', '~> 4.0'
+  pod 'IQKeyboardManagerSwift', '4.0.6'
 
   target 'CouchSurfingTests' do
     inherit! :search_paths

@@ -64,6 +64,7 @@ class LoginViewController: UIViewController {
         self.extendedLayoutIncludesOpaqueBars = false
         
         initUI()
+        setActionForUI()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,7 +87,7 @@ extension LoginViewController{
         appIcon.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(100)
             make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(60)
+            make.top.equalTo(view).offset(30)
         }
         //account input view
         view.addSubview(accountInputView)
@@ -94,7 +95,7 @@ extension LoginViewController{
             make.width.equalTo(290)
             make.height.equalTo(40)
             make.centerX.equalTo(view)
-            make.top.equalTo(appIcon.snp.bottom).offset(47)
+            make.top.equalTo(appIcon.snp.bottom).offset(30)
         }
         // captch input view
         view.addSubview(captchaInputView)
@@ -122,4 +123,21 @@ extension LoginViewController{
         }
         
     }
+    
+    func setActionForUI() {
+        getCaptchaBtn.addTarget(self, action: #selector(LoginViewController.captchaBtnDidClicked(_:)), for: .touchUpInside)
+        loginBtn.addTarget(self, action: #selector(LoginViewController.loginBtnDidClicked(_:)), for: .touchUpInside)
+    }
+}
+
+//MARK: - action
+extension LoginViewController{
+    func captchaBtnDidClicked(_ btn:UIButton) {
+        
+    }
+    
+    func loginBtnDidClicked(_ btn:UIButton) {
+        UserDataManager.manager().guidancePageShow = true
+    }
+    
 }

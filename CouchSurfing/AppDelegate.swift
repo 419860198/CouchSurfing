@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,20 +15,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        application.isStatusBarHidden = false;
+        
+        application.isStatusBarHidden = false
+        IQKeyboardManager.sharedManager().enable = true
+        
+        
         let window:UIWindow = UIWindow.init(frame: UIScreen.main.bounds)
         window.backgroundColor = UIColor.white
         self.window = window
         self.window?.makeKeyAndVisible()
         
-        let guidanceC:GuidancePageController = GuidancePageController()
-        guidanceC.toucheBlock = {
+// MARK: - root viewController
+        if UserDataManager.manager().guidancePageShow {
             let loginC = LoginViewController()
             
             let navC = UINavigationController(rootViewController: loginC)
             window.rootViewController = navC
+            
+        }else{
+            let guidanceC:GuidancePageController = GuidancePageController()
+            guidanceC.toucheBlock = {
+                let loginC = LoginViewController()
+                
+                let navC = UINavigationController(rootViewController: loginC)
+                window.rootViewController = navC
+            }
+            window.rootViewController = guidanceC
         }
-        window.rootViewController = guidanceC
         
         setTintColor()
         
