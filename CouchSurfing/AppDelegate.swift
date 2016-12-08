@@ -9,10 +9,11 @@
 import UIKit
 import IQKeyboardManagerSwift
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,BMKGeneralDelegate{
 
     var window: UIWindow?
-
+    var _mapManager: BMKMapManager?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         application.isStatusBarHidden = false
@@ -20,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setTintColor()
         
+// MARK: - baidu Map Kit
+        _mapManager = BMKMapManager()
+        let ret = _mapManager?.start(KeyConstant.baiduMapKey, generalDelegate: self)
+        if ret == false {
+            NSLog("manager start failed!")
+        }
         
         let window:UIWindow = UIWindow.init(frame: UIScreen.main.bounds)
         window.backgroundColor = UIColor.white
@@ -31,7 +38,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
+    func onGetNetworkState(_ iError: Int32) {
+        if iError == 0 {
+            print("联网成功")
+        }else{
+            print("onGetNetworkState \(iError)")
+        }
+    }
+    
+    func onGetPermissionState(_ iError: Int32) {
+        if iError == 0 {
+            print("授权成功")
+        }else{
+            print("onGetPermissionState \(iError)")
+        }
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -58,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//MARK: - func
 extension AppDelegate{
     func setTintColor() {
         let navAppearance = UINavigationBar.appearance()
