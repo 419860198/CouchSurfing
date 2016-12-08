@@ -11,6 +11,7 @@ target 'CouchSurfing' do
   pod 'SnapKit', '~> 3.0.2'
   pod 'Alamofire', '~> 4.0'
   pod 'IQKeyboardManagerSwift', '4.0.6'
+  pod 'BaiduMapKit' #百度地图SDK
 
   target 'CouchSurfingTests' do
     inherit! :search_paths
