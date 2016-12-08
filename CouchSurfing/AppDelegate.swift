@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.isStatusBarHidden = false
         IQKeyboardManager.sharedManager().enable = true
         
-        
         setTintColor()
         
         
@@ -28,29 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
 // MARK: - root viewController
-//        if UserDataManager.manager().guidancePageShow {
-//            let loginC = LoginViewController()
-//            
-//            let navC = NavigationController(rootViewController: loginC)
-//            window.rootViewController = navC
-//            
-//        }else{
-//            let guidanceC:GuidancePageController = GuidancePageController()
-//            guidanceC.toucheBlock = {
-//                let loginC = LoginViewController()
-//                
-//                let navC = NavigationController(rootViewController: loginC)
-//                window.rootViewController = navC
-//            }
-//            window.rootViewController = guidanceC
-//        }
-        
-        let topC = TopTabBarController()
-        window.rootViewController = topC
+        self.setRootViewController()
         
         return true
     }
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -90,4 +72,32 @@ extension AppDelegate{
         tabbarAppearance.backgroundColor = ScreenUI.mainColor
         tabbarAppearance.backgroundImage = UIImage()
     }
+    
+   public func setRootViewController() {
+        
+        if UserDataManager.manager().guidancePageShow {
+            
+            if UserDataManager.manager().isLogin{
+                let topC = TopTabBarController()
+                
+                window?.rootViewController = NavigationController(rootViewController: topC)
+            }else{
+                let loginC = LoginViewController()
+                
+                let navC = NavigationController(rootViewController: loginC)
+                window?.rootViewController = navC
+            }
+        }else{
+            let guidanceC:GuidancePageController = GuidancePageController()
+            guidanceC.toucheBlock = {
+                let loginC = LoginViewController()
+                
+                let navC = NavigationController(rootViewController: loginC)
+                self.window?.rootViewController = navC
+            }
+            window?.rootViewController = guidanceC
+        }
+    }
+    
+    static public let appDelegate = UIApplication.shared.delegate as! AppDelegate
 }

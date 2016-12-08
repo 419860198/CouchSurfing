@@ -43,6 +43,14 @@ class UserDataManager{
             UserDefaults.standard.set(newValue, forKey: "isGuidancePageShow")
         }
     }
+    public var isLogin:Bool{
+        get{
+            return UserDefaults.standard.bool(forKey: "isLogin")
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "isLogin")
+        }
+    }
     
     
 }

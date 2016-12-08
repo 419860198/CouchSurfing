@@ -139,7 +139,9 @@ extension LoginViewController{
     }
     
     func loginBtnDidClicked(_ btn:UIButton) {
+        UserDataManager.manager().isLogin = true
         
+        AppDelegate.appDelegate.setRootViewController()
     }
     
 }
