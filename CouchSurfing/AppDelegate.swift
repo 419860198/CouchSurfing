@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,BMKGeneralDelegate{
 
     var window: UIWindow?
     var _mapManager: BMKMapManager?
+    var mainNavigationController:NavigationController? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -102,23 +103,26 @@ extension AppDelegate{
             
             if UserDataManager.manager().isLogin{
                 let topC = TopTabBarController()
-                
-                window?.rootViewController = NavigationController(rootViewController: topC)
+                let mainNaviC = NavigationController(rootViewController: topC)
+                window?.rootViewController = mainNaviC
+                mainNavigationController = mainNaviC
             }else{
                 let loginC = LoginViewController()
                 
-                let navC = NavigationController(rootViewController: loginC)
-                window?.rootViewController = navC
+                let mainNaviC = NavigationController(rootViewController: loginC)
+                window?.rootViewController = mainNaviC
+                mainNavigationController = mainNaviC
             }
         }else{
             let guidanceC:GuidancePageController = GuidancePageController()
+            let mainNaviC = NavigationController(rootViewController: guidanceC)
             guidanceC.toucheBlock = {
                 let loginC = LoginViewController()
-                
-                let navC = NavigationController(rootViewController: loginC)
-                self.window?.rootViewController = navC
+            
+                self.mainNavigationController?.pushViewController(loginC, animated: true)
             }
-            window?.rootViewController = guidanceC
+            window?.rootViewController = mainNaviC
+            mainNavigationController = mainNaviC
         }
     }
     

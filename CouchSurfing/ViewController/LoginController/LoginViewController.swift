@@ -124,7 +124,6 @@ extension LoginViewController{
             make.height.equalTo(49)
         }
         
-        
     }
     
     func setActionForUI() {
@@ -141,7 +140,7 @@ extension LoginViewController{
     func loginBtnDidClicked(_ btn:UIButton) {
         UserDataManager.manager().isLogin = true
         
-        AppDelegate.appDelegate.setRootViewController()
+        AppDelegate.appDelegate.mainNavigationController?.pushViewController(TopTabBarController(), animated: true)
     }
     
 }

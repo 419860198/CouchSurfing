@@ -638,7 +638,7 @@
 				INFOPLIST_FILE = CouchSurfing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CoushSurfing.BG;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CoushSurfing.BG1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CouchSurfing/CouchSurfing-Bridging-Header.h";
@@ -659,7 +659,7 @@
 				INFOPLIST_FILE = CouchSurfing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CoushSurfing.BG;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CoushSurfing.BG1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CouchSurfing/CouchSurfing-Bridging-Header.h";

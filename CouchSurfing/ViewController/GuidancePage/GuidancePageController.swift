@@ -41,12 +41,12 @@ class GuidancePageController: UIViewController {
 extension GuidancePageController{
     fileprivate func initGuidancePageView(){
         guidancePageView.frame = view.bounds
-        guidancePageView.contentSize = CGSize(width: ScreenUI.with * CGFloat(integerLiteral: guidanceImages.count), height: ScreenUI.herght)
+        guidancePageView.contentSize = CGSize(width: ScreenUI.with * CGFloat(integerLiteral: guidanceImages.count), height: 0.0)
         view.addSubview(guidancePageView)
         
         for (i,imageName) in guidanceImages.enumerated() {
             let imageView = UIImageView(image: UIImage(named: imageName))
-            let frame:CGRect = CGRect(x: CGFloat(i) * ScreenUI.with, y:0.0 , width: ScreenUI.with, height: ScreenUI.herght)
+            let frame:CGRect = CGRect(x: CGFloat(i) * ScreenUI.with, y:-20 , width: ScreenUI.with, height: ScreenUI.herght)
             imageView.frame = frame
             guidancePageView.addSubview(imageView)
             if i == guidanceImages.count-1 {
@@ -59,7 +59,7 @@ extension GuidancePageController{
     @objc fileprivate func guidancePageDidTouche(_ sender: AnyObject){
         
         if toucheBlock != nil{
-            UserDataManager.manager().guidancePageShow = true
+//            UserDataManager.manager().guidancePageShow = true
             toucheBlock!()
         }
     }
