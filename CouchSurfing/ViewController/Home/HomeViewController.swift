@@ -14,6 +14,7 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
     var mapView: BMKMapView = {
         let map = BMKMapView()
         map.showsUserLocation = true
+        map.userTrackingMode = BMKUserTrackingModeHeading
         let param = BMKLocationViewDisplayParam()
         param.isAccuracyCircleShow = false
         param.isRotateAngleValid = false
