@@ -36,6 +36,10 @@ class NavigationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.extendedLayoutIncludesOpaqueBars = false
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.edgesForExtendedLayout =  UIRectEdge()
+        
         initView()
     }
     

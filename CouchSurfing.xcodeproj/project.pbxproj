@@ -108,7 +108,8 @@
 				C1C49C951DF82C77005A5AA2 /* NavigationController.swift */,
 				C1C49C991DF82D26005A5AA2 /* NavigationViewController.swift */,
 			);
-			path = BaseObject;
+			name = BaseObject;
+			path = ../BaseObject;
 			sourceTree = "<group>";
 		};
 		851B089B1DF7FAD600DAA072 /* Tool */ = {
@@ -149,7 +150,6 @@
 		85412B2B1DF69B2100DEF6BF /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				8507C12D1DF8125000EA1A57 /* BaseObject */,
 				851B089B1DF7FAD600DAA072 /* Tool */,
 				85412B321DF6A5C100DEF6BF /* Extensions */,
 				85412B301DF6A28400DEF6BF /* Screen.swift */,
@@ -170,6 +170,7 @@
 		85412B321DF6A5C100DEF6BF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8507C12D1DF8125000EA1A57 /* BaseObject */,
 				85412B331DF6A5E100DEF6BF /* UIColorExtension.swift */,
 				85412B3C1DF7BED600DEF6BF /* UIImageExtension.swift */,
 			);

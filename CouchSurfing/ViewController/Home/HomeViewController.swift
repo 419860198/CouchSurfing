@@ -8,13 +8,21 @@
 
 import UIKit
 
-class HomeViewController: NavigationViewController ,BMKMapViewDelegate{
-
+class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocationServiceDelegate{
+    
+    
     var mapView: BMKMapView = {
         let map = BMKMapView()
-        
+        map.showsUserLocation = true
+        let param = BMKLocationViewDisplayParam()
+        param.isAccuracyCircleShow = false
+        param.isRotateAngleValid = false
+        param.locationViewImgName = "userLocation_icon"
+        map.updateLocationView(with: param)
         return map
     }()
+    
+    let locSevice = BMKLocationService()
     fileprivate let pakgBtn:UIButton = {
         let btn = UIButton()
         btn.setBackgroundImage(UIImage(named: "package"), for: .normal)
@@ -27,13 +35,10 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate{
         
         initUI()
         
-        let annotaion = BMKPointAnnotation()
-        var coor = CLLocationCoordinate2D()
-        coor.latitude = 39.915
-        coor.longitude = 116.404
-        annotaion.coordinate = coor
-        annotaion.title = "这里是北京"
-        mapView.addAnnotation(annotaion)
+        mapView.delegate = self
+        locSevice.delegate = self
+        locSevice.startUserLocationService()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,15 +64,37 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate{
         mapView.add(ground)
         
     }
+    
+    func addAnnotaion() {
+        let annotaion = BMKPointAnnotation()
+        var coor = CLLocationCoordinate2D()
+        coor.latitude = 39.915
+        coor.longitude = 116.404
+        annotaion.coordinate = coor
+        annotaion.title = "这里是北京"
+        mapView.addAnnotation(annotaion)
+    }
+    
+    func addAnnotaionForSHAFA(_ location:CLLocationCoordinate2D, title:String) {
+        let shafaAnnotation = BMKPointAnnotation()
+        shafaAnnotation.coordinate = location
+        shafaAnnotation.title = title
+        mapView.addAnnotation(shafaAnnotation)
+    }
+    
+    func drawUserRound(_ center:CGPoint) {
+        
+    }
 
 }
 
 // MARK: - BMKmapView delegate
 extension HomeViewController{
     func mapView(_ mapView: BMKMapView!, viewFor annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        if annotation.isKind(of: BMKAnnotation.self) {
+        if annotation.isKind(of: BMKPointAnnotation.self) {
             let newAnnotationView = BMKAnnotationView(annotation: annotation, reuseIdentifier: "newAnnotaion")
         //    newAnnotationView.animatesDrop = YES
+            newAnnotationView?.image = UIImage(named: "location_icon")
             
             return newAnnotationView
         }
@@ -80,6 +107,25 @@ extension HomeViewController{
             return groundView
         }
         return nil
+    }
+    
+    func didUpdateUserHeading(_ userLocation: BMKUserLocation!) {
+        mapView.updateLocationData(userLocation)
+        let location = userLocation.location.coordinate
+        
+        for _ in 0...10 {
+            let la:Double = Double(arc4random()%100 )/10000.0
+            let lo:Double = Double(arc4random()%100)/10000.0
+            addAnnotaionForSHAFA(CLLocationCoordinate2D(latitude: location.latitude - 0.005 + la , longitude: location.longitude - 0.005 + lo), title: "shafa")
+        }
+        mapView.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        let region = BMKCoordinateRegion(center: location, span: BMKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapView.setRegion(region, animated: true)
+        locSevice.stopUserLocationService()
+    }
+    
+    func didUpdate(_ userLocation: BMKUserLocation!) {
+        
     }
 }
 
@@ -104,5 +150,8 @@ extension HomeViewController{
             make.top.equalTo(navigationView.snp.bottom)
             make.left.right.bottom.equalTo(view)
         })
+        mapView.compassPosition = CGPoint(x: 10, y: 10)
+        mapView.showMapScaleBar = true
+        mapView.mapScaleBarPosition = CGPoint(x: ScreenUI.with - 100, y: ScreenUI.herght - 64 - 49 - 20)
     }
 }

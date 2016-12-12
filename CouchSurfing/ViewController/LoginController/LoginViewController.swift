@@ -60,7 +60,7 @@ class LoginViewController: NavigationViewController {
 
         // Do any additional setup after loading the view.
         
-        self.edgesForExtendedLayout = UIRectEdge.bottom
+        self.edgesForExtendedLayout = UIRectEdge()
         self.automaticallyAdjustsScrollViewInsets = false
         self.extendedLayoutIncludesOpaqueBars = false
         
