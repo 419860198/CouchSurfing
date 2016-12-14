@@ -15,5 +15,7 @@ struct ScreenUI {
     static let mainColor:UIColor = UIColor(convertHex: 0x008de7)
     static let tinBlackColor:UIColor = UIColor(convertHex:0x666666)
     
+    static let mapCircelColor:UIColor = UIColor(convertHex:0x000000, alpha:0.1)
+    static let mapUserOverlayRadius:Double = 700
     static let naviLeft_Margin:CGFloat = 14
 }

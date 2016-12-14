@@ -17,5 +17,11 @@ extension UIColor {
                    green:  CGFloat((convertHex & 0xFF00) >> 8)/255.0,
                    blue: CGFloat((convertHex & 0xFF))/255.0,
                    alpha: 1.0)
-    } 
+    }
+    convenience init(convertHex:UInt32, alpha:CGFloat ) {
+        self.init(red: CGFloat((convertHex & 0xFF0000) >> 16)/255.0,
+                  green:  CGFloat((convertHex & 0xFF00) >> 8)/255.0,
+                  blue: CGFloat((convertHex & 0xFF))/255.0,
+                  alpha: alpha)
+    }
 }
