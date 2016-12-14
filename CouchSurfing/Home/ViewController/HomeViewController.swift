@@ -238,6 +238,7 @@ extension HomeViewController{
     }
     
     func reserveBtnDidClicked() {
+        HomeProgressHUD.show(HUDConfig())
         UIView.animate(withDuration: 0.25, animations:{
             self.reserveBtn.alpha = 0.0
         })

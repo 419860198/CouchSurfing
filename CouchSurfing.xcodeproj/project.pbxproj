@@ -164,9 +164,9 @@
 		C1D5BBEA1E016D9800D62DD1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C1D5BBEB1E016D9800D62DD1 /* Modle */,
-				C1D5BBEC1E016D9800D62DD1 /* View */,
 				C1D5BBED1E016D9800D62DD1 /* ViewController */,
+				C1D5BBEC1E016D9800D62DD1 /* View */,
+				C1D5BBEB1E016D9800D62DD1 /* Modle */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -197,9 +197,9 @@
 		C1D5BBF41E016D9800D62DD1 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				C1D5BBF51E016D9800D62DD1 /* Modle */,
-				C1D5BBF61E016D9800D62DD1 /* View */,
 				C1D5BBF71E016D9800D62DD1 /* ViewController */,
+				C1D5BBF61E016D9800D62DD1 /* View */,
+				C1D5BBF51E016D9800D62DD1 /* Modle */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -231,9 +231,9 @@
 			children = (
 				C1D5BBFA1E016D9800D62DD1 /* BaseObject */,
 				C1D5BBFD1E016D9800D62DD1 /* Extensions */,
+				C1D5BC021E016D9800D62DD1 /* Tool */,
 				C1D5BC001E016D9800D62DD1 /* KeyConstant.swift */,
 				C1D5BC011E016D9800D62DD1 /* Screen.swift */,
-				C1D5BC021E016D9800D62DD1 /* Tool */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -267,9 +267,9 @@
 		C1D5BC041E016D9800D62DD1 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				C1D5BC051E016D9800D62DD1 /* Modle */,
-				C1D5BC061E016D9800D62DD1 /* View */,
 				C1D5BC071E016D9800D62DD1 /* ViewController */,
+				C1D5BC061E016D9800D62DD1 /* View */,
+				C1D5BC051E016D9800D62DD1 /* Modle */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -299,9 +299,9 @@
 		C1D5BC171E016DE800D62DD1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C1D5BC181E016DE800D62DD1 /* Modle */,
-				C1D5BC191E016DE800D62DD1 /* View */,
 				C1D5BC1A1E016DE800D62DD1 /* ViewController */,
+				C1D5BC191E016DE800D62DD1 /* View */,
+				C1D5BC181E016DE800D62DD1 /* Modle */,
 			);
 			path = Login;
 			sourceTree = "<group>";
