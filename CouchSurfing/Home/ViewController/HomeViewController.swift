@@ -10,7 +10,17 @@ import UIKit
 
 class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocationServiceDelegate{
     
+//MARK: - data
+    //定位服务
+    let locSevice = BMKLocationService()
+    //沙发坐标
+    fileprivate var shaFaKeList:[BMKPointAnnotation] = []
+    //最后坐标
+    fileprivate var lastLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    //上次旋转角度
+    fileprivate var lastRotaion:Double = 0.0
     
+//MARK: - view
     var mapView: BMKMapView = {
         let map = BMKMapView()
         map.showsUserLocation = true
@@ -27,18 +37,11 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
         map.updateLocationView(with: param)
         return map
     }()
-    
-    let locSevice = BMKLocationService()
-    
-    fileprivate var shaFaKeList:[BMKPointAnnotation] = []
     fileprivate var userOverlay:BMKCircle = {
         var overlay = BMKCircle(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), radius: ScreenUI.mapUserOverlayRadius)
         
         return overlay!
     }()
-    
-    fileprivate var lastLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-    fileprivate var lastRotaion:Double = 0.0
     
     fileprivate let pakgBtn:UIButton = {
         let btn = UIButton()
@@ -53,6 +56,12 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
         return btn
     }()
     
+    fileprivate let reserveBtn:UIButton = {
+        let btn = UIButton()
+        btn.setBackgroundImage(UIImage(named: ""), for: .normal)
+        btn.backgroundColor = ScreenUI.mapCircelColor
+        return btn
+    }()
 //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,6 +208,15 @@ extension HomeViewController{
         }
         goOriginBtn.addTarget(self, action: #selector(HomeViewController.originBtnDidClicked), for: .touchUpInside)
         
+        view.addSubview(reserveBtn)
+        reserveBtn.snp.makeConstraints { (make) in
+            make.bottom.equalTo(view.snp.bottom).offset(-27)
+            make.width.equalTo(200)
+            make.height.equalTo(44)
+            make.centerX.equalTo(view)
+        }
+        reserveBtn.addTarget(self, action: #selector(HomeViewController.reserveBtnDidClicked), for: .touchUpInside)
+        
         mapView.add(userOverlay)
         
         mapView.compassPosition = CGPoint(x: 10, y: 10)
@@ -217,5 +235,11 @@ extension HomeViewController{
         mapView.setRegion(region, animated: true)
         //画圆
         userOverlay.setCircleWithCenterCoordinate(lastLocation, radius: ScreenUI.mapUserOverlayRadius)
+    }
+    
+    func reserveBtnDidClicked() {
+        UIView.animate(withDuration: 0.25, animations:{
+            self.reserveBtn.alpha = 0.0
+        })
     }
 }
