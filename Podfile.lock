@@ -1,21 +1,28 @@
 PODS:
   - Alamofire (4.2.0)
   - BaiduMapKit (3.1.0)
+  - GoogleMaps (2.1.1):
+    - GoogleMaps/Maps (= 2.1.1)
+  - GoogleMaps/Base (2.1.1)
+  - GoogleMaps/Maps (2.1.1):
+    - GoogleMaps/Base
   - IQKeyboardManagerSwift (4.0.6)
   - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - BaiduMapKit
+  - GoogleMaps
   - IQKeyboardManagerSwift (= 4.0.6)
   - SnapKit (~> 3.0.2)
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   BaiduMapKit: 4cfaedb118cff7e157e9771859a4bf65a261b2a1
+  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: 49fe7d2e755379f5a9ef598c3fc9e70cdbe037f4
+PODFILE CHECKSUM: 2901ce5466e334dec7960b9e86d0605091e5b711
 
 COCOAPODS: 1.2.0.beta.1

@@ -14,15 +14,16 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
     var mapView: BMKMapView = {
         let map = BMKMapView()
         map.showsUserLocation = true
-        map.userTrackingMode = BMKUserTrackingModeHeading
+        map.userTrackingMode = BMKUserTrackingModeFollow
+        map.setCompassImage(UIImage(named: "userLocation_icon"))
+        map.clearsContextBeforeDrawing = true
+        map.isRotateEnabled = true
+        
         let param = BMKLocationViewDisplayParam()
         param.isAccuracyCircleShow = false
         param.isRotateAngleValid = false
         param.locationViewImgName = "userLocation_icon"
         map.updateLocationView(with: param)
-        map.setCompassImage(UIImage(named: "userLocation_icon"))
-        map.clearsContextBeforeDrawing = true
-        map.isRotateEnabled = true
         return map
     }()
     
@@ -36,6 +37,7 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
     }()
     
     fileprivate var lastLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    fileprivate var lastRotaion:Double = 0.0
     
     fileprivate let pakgBtn:UIButton = {
         let btn = UIButton()
@@ -45,18 +47,20 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
     
     fileprivate let goOriginBtn:UIButton = {
         let btn = UIButton()
-        btn.setBackgroundImage(UIimage(named: "origin_btn"), for: <#T##UIControlState#>)
+        btn.setBackgroundImage(UIImage(named: "origin_btn"), for: .normal)
+        
+        return btn
     }()
     
 //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initUI()
-        
         mapView.delegate = self
         locSevice.delegate = self
         locSevice.startUserLocationService()
+        
+        initUI()
         
     }
 
@@ -134,11 +138,10 @@ extension HomeViewController{
     }
     
     @objc(didUpdateUserHeading:) func didUpdateUserHeading(_ userLocation: BMKUserLocation!) {
-        mapView.updateLocationData(userLocation)
-        let location = userLocation.location.coordinate
-        
-        mapView.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        //大于5才旋转
         let rotation = userLocation.heading.magneticHeading - 90.0
+        if abs(lastRotaion - rotation) < 5{ return  }
+        lastRotaion = rotation
         mapView.rotation = Int32(CGFloat(rotation))
     }
     
@@ -146,17 +149,21 @@ extension HomeViewController{
         //大于5米更新
         let location = userLocation.location.coordinate
         let distance = BMKMetersBetweenMapPoints(BMKMapPointForCoordinate(lastLocation), BMKMapPointForCoordinate(location))
+        mapView.updateLocationData(userLocation)
         if distance > 5 {
-            userOverlay.setCircleWithCenterCoordinate(location, radius: ScreenUI.mapUserOverlayRadius)
+            if lastLocation.latitude == 0 && lastLocation.longitude == 0 {
+                lastLocation = location
+                self.originBtnDidClicked()
+            }
+            //移除大头针和添加大头针
             mapView.removeAnnotations(shaFaKeList)
             shaFaKeList = []
-            let region = BMKCoordinateRegion(center: location, span: BMKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-            mapView.setRegion(region, animated: true)
             for _ in 0...10 {
                 let la:Double = Double(arc4random()%100 )/10000.0
                 let lo:Double = Double(arc4random()%100)/10000.0
                 addAnnotaionForSHAFA(CLLocationCoordinate2D(latitude: location.latitude - 0.005 + la , longitude: location.longitude - 0.005 + lo), title: "shafa")
             }
+            lastLocation = location
         }
     }
 }
@@ -167,7 +174,7 @@ extension HomeViewController{
     fileprivate func initUI(){
         view.backgroundColor = UIColor.purple
         titleStr = "沙发客"
-        
+        //
         navigationView.addSubview(pakgBtn)
         
         pakgBtn.snp.makeConstraints { (make) in
@@ -183,11 +190,31 @@ extension HomeViewController{
             make.left.right.bottom.equalTo(view)
         })
         
+        view.addSubview(goOriginBtn)
+        goOriginBtn.snp.makeConstraints { (make) in
+            make.width.height.equalTo(25)
+            make.left.equalTo(view).offset(16)
+            make.bottom.equalTo(view.snp.bottom).offset(-27)
+        }
+        goOriginBtn.addTarget(self, action: #selector(HomeViewController.originBtnDidClicked), for: .touchUpInside)
+        
         mapView.add(userOverlay)
         
         mapView.compassPosition = CGPoint(x: 10, y: 10)
         mapView.setCompassImage(UIImage(named: "userLocation_icon"))
         mapView.showMapScaleBar = true
         mapView.mapScaleBarPosition = CGPoint(x: ScreenUI.with - 100, y: ScreenUI.herght - 64 - 49 - 20)
+    }
+}
+
+extension HomeViewController{
+    func originBtnDidClicked() {
+        //设置中心
+        mapView.centerCoordinate = CLLocationCoordinate2D(latitude: lastLocation.latitude, longitude: lastLocation.longitude)
+        //设置显示区域
+        let region = BMKCoordinateRegion(center: lastLocation, span: BMKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapView.setRegion(region, animated: true)
+        //画圆
+        userOverlay.setCircleWithCenterCoordinate(lastLocation, radius: ScreenUI.mapUserOverlayRadius)
     }
 }
