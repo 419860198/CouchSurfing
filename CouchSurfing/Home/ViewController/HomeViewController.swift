@@ -14,7 +14,7 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
     var mapView: BMKMapView = {
         let map = BMKMapView()
         map.showsUserLocation = true
-        map.userTrackingMode = BMKUserTrackingModeFollow
+        map.userTrackingMode = BMKUserTrackingModeNone
         map.setCompassImage(UIImage(named: "userLocation_icon"))
         map.clearsContextBeforeDrawing = true
         map.isRotateEnabled = true
@@ -22,7 +22,8 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
         let param = BMKLocationViewDisplayParam()
         param.isAccuracyCircleShow = false
         param.isRotateAngleValid = false
-        param.locationViewImgName = "userLocation_icon"
+        //需要放到百度bundle中因为git忽略了pods文件无法显示
+//        param.locationViewImgName = "origin_btn"
         map.updateLocationView(with: param)
         return map
     }()
