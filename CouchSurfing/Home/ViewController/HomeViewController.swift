@@ -56,11 +56,11 @@ class HomeViewController: NavigationViewController ,BMKMapViewDelegate, BMKLocat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initUI()
         mapView.delegate = self
         locSevice.delegate = self
         locSevice.startUserLocationService()
         
-        initUI()
         
     }
 
