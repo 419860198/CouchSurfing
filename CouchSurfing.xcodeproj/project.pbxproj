@@ -14,6 +14,7 @@
 		8581EFA11DF65B0200D8AB32 /* CouchSurfingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581EFA01DF65B0200D8AB32 /* CouchSurfingTests.swift */; };
 		B16C57FD2D4F99ACBE26276E /* Pods_CouchSurfing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1FA33CD51E8FEF31575857 /* Pods_CouchSurfing.framework */; };
 		B5C2A383F91ADBD0961E5777 /* Pods_CouchSurfingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7402B3D667096F4976BAD20A /* Pods_CouchSurfingTests.framework */; };
+		C18E55581E0178F4000EEEF9 /* HomeProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E55571E0178F4000EEEF9 /* HomeProgressHUD.swift */; };
 		C1D5BC0A1E016D9800D62DD1 /* GuidancePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D5BBE91E016D9800D62DD1 /* GuidancePageController.swift */; };
 		C1D5BC0B1E016D9800D62DD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D5BBEE1E016D9800D62DD1 /* HomeViewController.swift */; };
 		C1D5BC0D1E016D9800D62DD1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D5BBF81E016D9800D62DD1 /* NewsViewController.swift */; };
@@ -54,6 +55,7 @@
 		8581EFA01DF65B0200D8AB32 /* CouchSurfingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchSurfingTests.swift; sourceTree = "<group>"; };
 		8581EFA21DF65B0200D8AB32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C14DFB721DF979CB002AD6C9 /* CouchSurfing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CouchSurfing-Bridging-Header.h"; sourceTree = "<group>"; };
+		C18E55571E0178F4000EEEF9 /* HomeProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeProgressHUD.swift; sourceTree = "<group>"; };
 		C1D5BBE91E016D9800D62DD1 /* GuidancePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidancePageController.swift; sourceTree = "<group>"; };
 		C1D5BBEE1E016D9800D62DD1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C1D5BBF81E016D9800D62DD1 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		C1D5BBEC1E016D9800D62DD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C18E55571E0178F4000EEEF9 /* HomeProgressHUD.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				C1D5BC0E1E016D9800D62DD1 /* NavigationController.swift in Sources */,
 				C1D5BC0A1E016D9800D62DD1 /* GuidancePageController.swift in Sources */,
 				C1D5BC101E016D9800D62DD1 /* UIColorExtension.swift in Sources */,
+				C18E55581E0178F4000EEEF9 /* HomeProgressHUD.swift in Sources */,
 				C1D5BC131E016D9900D62DD1 /* Screen.swift in Sources */,
 				C1D5BC161E016D9900D62DD1 /* TopTabBarController.swift in Sources */,
 				8581EF8C1DF65B0200D8AB32 /* AppDelegate.swift in Sources */,

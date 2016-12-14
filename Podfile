@@ -13,6 +13,7 @@ target 'CouchSurfing' do
   pod 'IQKeyboardManagerSwift', '4.0.6'
   pod 'BaiduMapKit' #百度地图SDK
   pod 'GoogleMaps'
+  pod 'SVProgressHUD'
 
   target 'CouchSurfingTests' do
     inherit! :search_paths

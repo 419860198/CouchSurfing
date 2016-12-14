@@ -8,6 +8,7 @@ PODS:
     - GoogleMaps/Base
   - IQKeyboardManagerSwift (4.0.6)
   - SnapKit (3.0.2)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - GoogleMaps
   - IQKeyboardManagerSwift (= 4.0.6)
   - SnapKit (~> 3.0.2)
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -22,7 +24,8 @@ SPEC CHECKSUMS:
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 2901ce5466e334dec7960b9e86d0605091e5b711
+PODFILE CHECKSUM: 49f3c1db7cc7d763194079df9a18bc6f13ed8ec0
 
 COCOAPODS: 1.1.1

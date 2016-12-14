@@ -211,9 +211,9 @@ extension HomeViewController{
         view.addSubview(reserveBtn)
         reserveBtn.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.snp.bottom).offset(-27)
-            make.width.equalTo(200)
+            make.width.equalTo(250)
             make.height.equalTo(44)
-            make.centerX.equalTo(view)
+            make.centerX.equalTo(view).offset(18)
         }
         reserveBtn.addTarget(self, action: #selector(HomeViewController.reserveBtnDidClicked), for: .touchUpInside)
         
